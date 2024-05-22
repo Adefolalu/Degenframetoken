@@ -29,13 +29,13 @@ function getImageUrl(fid: number) {
     const base = process.env.BASE_URL + '/images/';
 
     console.info(`FID REQUEST: ${fid}`);
-    if (0 <= fid && fid <= 1_499) {
+    if (0 <= fid && fid <= 9_999) {
         return base + '2Billion.png';
-    } else if (1_500 <= fid && fid <= 9_999) {
+    } else if (10_000 >= fid && fid <= 99_999) {
         return base + '1Billion.png';
-    } else if (10_000 <= fid && fid <= 99_999) {
+    } else if (100_000 >= fid && fid <= 249_999) {
         return base + '500Million.png';
-    } else if (100_000 <= fid && fid <= 224_999) {
+    } else if (250_000 >= fid && fid <= 349_999) {
         return base + '250Million.png';
     } else {
         return base + '100Million.png';
