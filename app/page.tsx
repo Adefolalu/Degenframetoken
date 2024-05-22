@@ -25,36 +25,36 @@ export default function Home() {
             Must have at least one verified wallet on your account!
           </strong>
         </div>
-        <strong>First 2,000 claims graciously sponsored by Base chain!</strong>
+        <strong>First 2,000 claims graciously sponsored!</strong>
         <strong>
           To help sponsor the airdrop, donate Base ETH to:
           0x7dd39E3aC366D3c031ed84343377ceFbd5A9F47F
         </strong>
         <a
-          href={`https://basescan.org/address/${process.env.NEXT_PUBLIC_CONTRACT_ADDRESS}`}
+          href={`https://explorer.degen.tips/address/${process.env.NEXT_PUBLIC_CONTRACT_ADDRESS}`}
           target="_blank"
         >
-          View Contract on Basescan.org
+          View Contract on explorer.degen.tips
         </a>
         <strong>
           Allocation is based on Farcaster ID and how long you have been on the
           protocol:
         </strong>
         <p>
-          <strong>Total Supply:</strong> 1 Trillion $FRAME
+          <strong>Total Supply:</strong> 1 Trillion $DEFRAME
           <br />
-          <strong>LP/Team Supply:</strong> 200 Billion $FRAME
+          <strong>LP/Team Supply:</strong> 200 Billion $DEFRAME
         </p>
         <p className={styles.supply}>
-          <strong>0-9999:</strong> 0.02% (2 Billion $FRAME)
+          <strong>0-9999:</strong> 0.02% (2 Billion $DEFRAME)
           <br />
-          <strong>10,000-99,999:</strong> 0.01% (1 Billion $FRAME)
+          <strong>10,000-99,999:</strong> 0.01% (1 Billion $DEFRAME)
           <br />
-          <strong>100,000-249,999:</strong> 0.005% (500 Million $FRAME)
+          <strong>100,000-249,999:</strong> 0.005% (500 Million $DEFRAME)
           <br />
-          <strong>250,000-349,999:</strong> 0.0025% (250 Million $FRAME)
+          <strong>250,000-349,999:</strong> 0.0025% (250 Million $DEFRAME)
           <br />
-          <strong>350,000+:</strong> 0.001% (100 Million $FRAME)
+          <strong>350,000+:</strong> 0.001% (100 Million $DEFRAME)
         </p>
       </div>
     </main>
