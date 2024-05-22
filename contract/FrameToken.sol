@@ -49,7 +49,7 @@ contract Deframe is ERC20 {
     function calculateAirdropSupply(uint128 fid) public pure returns (uint256) {
         if (fid >= 1 && fid <= 9999) {
             return 2_000_000_000 * 1 ether;
-        } else if (fid >= 10_000 && fid <= 99999) {
+        } else if (fid >= 10_000 && fid <= 99_999) {
             return 1_000_000_000 * 1 ether;
         } else if (fid >= 100_000 && fid <= 249_999) {
             return 500_000_000 * 1 ether;
