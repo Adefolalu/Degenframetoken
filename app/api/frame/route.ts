@@ -1,24 +1,22 @@
-import { FrameRequest, getFrameAccountAddress, getFrameHtmlResponse, getFrameMessage } from "@coinbase/onchainkit";
+import { FrameRequest, getFrameAccountAddress, getFrameHtmlResponse, getFrameMessage } from "@coindegen/onchainkit";
 import { NextRequest, NextResponse } from "next/server";
 import { createPublicClient, createWalletClient, fallback, formatEther, getAddress, http } from "viem";
-import { base, goerli } from "viem/chains";
+import { degen, goerli } from "viem/chains";
 import ERC20 from "../../abi/erc20.json";
 import { privateKeyToAccount } from "viem/accounts";
 
 const client = createPublicClient({
-    chain: base,
+    chain: degen,
     transport: fallback([
-        http(process.env.ALCHEMY_RPC_URL as string),
-        http(process.env.ANKR_RPC_URL as string),
+        http(process.env.DEGEN_RPC_URL as string),
         http()
     ])
 });
 
 const walletClient = createWalletClient({
-    chain: base,
+    chain: degen,
     transport: fallback([
-        http(process.env.ALCHEMY_RPC_URL as string),
-        http(process.env.ANKR_RPC_URL as string),
+        http(process.env.DEGEN_RPC_URL as string),
         http()
     ]),
 });
@@ -26,19 +24,19 @@ const walletClient = createWalletClient({
 const account = privateKeyToAccount(process.env.PRIVATE_KEY as `0x${string}`);
 
 function getImageUrl(fid: number) {
-    const base = process.env.BASE_URL + '/images/';
+    const degen = process.env.DEGEN_URL + '/images/';
 
     console.info(`FID REQUEST: ${fid}`);
     if (0 <= fid && fid <= 9_999) {
-        return base + '2Billion.png';
+        return degen + '2Billion.png';
     } else if (10_000 >= fid && fid <= 99_999) {
-        return base + '1Billion.png';
+        return degen + '1Billion.png';
     } else if (100_000 >= fid && fid <= 249_999) {
-        return base + '500Million.png';
+        return degen + '500Million.png';
     } else if (250_000 >= fid && fid <= 349_999) {
-        return base + '250Million.png';
+        return degen + '250Million.png';
     } else {
-        return base + '100Million.png';
+        return degen + '100Million.png';
     }
 }
 
@@ -50,11 +48,11 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 
     if (isValid && message.fid) {
         if (message.buttonIndex == 2) {
-            return NextResponse.redirect(process.env.BASE_URL as string, 302);
+            return NextResponse.redirect(process.env.DEGEN_URL as string, 302);
         }
 
         try {
-            accountAddress = await getFrameAccountAddress(message, { NEYNAR_API_KEY: process.env.NEYNAR_API_KEY });
+            accountAddress = await getFrameAccountAddress(message, { AIRSTACK_API_KEY: process.env.AIRSTACK_API_KEY });
         } catch (err) {
             console.error(err);
             return new NextResponse(
@@ -65,8 +63,8 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
                             action: 'post',
                         }
                     ],
-                    image: process.env.BASE_URL + '/images/UhOh.png',
-                    post_url: process.env.BASE_URL + '/api/frame'
+                    image: process.env.DEGEN_URL + '/images/UhOh.png',
+                    post_url: process.env.DEGEN_URL + '/api/frame'
                 }), { status: 200 });
         }
 
@@ -97,7 +95,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
                         }
                     ],
                     image: getImageUrl(message.fid),
-                    post_url: process.env.BASE_URL + '/api/frame/redirect'
+                    post_url: process.env.DEGEN_URL + '/api/frame/redirect'
                 })
             );
         }
@@ -121,8 +119,8 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
                             action: 'post_redirect'
                         }
                     ],
-                    image: process.env.BASE_URL + '/images/UhOh.png',
-                    post_url: process.env.BASE_URL + '/api/frame/redirect'
+                    image: process.env.DEGEN_URL + '/images/UhOh.png',
+                    post_url: process.env.DEGEN_URL + '/api/frame/redirect'
                 })
             );
 
@@ -142,7 +140,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
                     getFrameHtmlResponse({
                         buttons: [
                             {
-                                label: `Claimed! Check Your Wallet on Base`,
+                                label: `Claimed! Check Your Wallet on degen`,
                                 action: 'post',
                             },
                             {
@@ -151,7 +149,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
                             }
                         ],
                         image: getImageUrl(message.fid),
-                        post_url: process.env.BASE_URL + '/api/frame'
+                        post_url: process.env.DEGEN_URL + '/api/frame'
                     }));
             }
 
@@ -165,8 +163,8 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
                             action: 'post',
                         }
                     ],
-                    image: process.env.BASE_URL + '/images/UhOh.png',
-                    post_url: process.env.BASE_URL + '/api/frame'
+                    image: process.env.DEGEN_URL + '/images/UhOh.png',
+                    post_url: process.env.DEGEN_URL + '/api/frame'
                 }), { status: 200 });
         }
 
@@ -183,8 +181,8 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
                     action: 'post_redirect'
                 }
             ],
-            image: process.env.BASE_URL + '/images/DefaultFrame.png',
-            post_url: process.env.BASE_URL + '/api/frame'
+            image: process.env.DEGEN_URL + '/images/DefaultFrame.png',
+            post_url: process.env.DEGEN_URL + '/api/frame'
         }), { status: 200 });
 }
 

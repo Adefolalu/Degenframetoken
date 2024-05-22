@@ -5,7 +5,7 @@ import { getFrameMetadata } from "@coinbase/onchainkit";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
-const BASE_URL = process.env.BASE_URL;
+const DEGEN_URL = process.env.DEGEN_URL;
 
 const frameMetadata = getFrameMetadata({
   buttons: [
@@ -18,22 +18,22 @@ const frameMetadata = getFrameMetadata({
       action: 'post_redirect'
     }
   ],
-  post_url: BASE_URL + '/api/frame',
-  image: BASE_URL + '/images/DefaultFrame.png'
+  post_url: DEGEN_URL + '/api/frame',
+  image: DEGEN_URL + '/images/DefaultFrame.png'
 });
 
 export const metadata: Metadata = {
-  title: "Frame Token | Claim Your Airdrop",
-  description: "The first airdrop using Farcaster Frames!",
+  title: "Deframe Token | Claim Your Airdrop",
+  description: "The first Degen airdrop using Farcaster Frames!, Build for the Community",
   openGraph: {
-    title: "Frame Token | Claim Your Airdrop",
-    description: "The first airdrop using Farcaster Frames!",
+    title: "Deframe Token | Claim Your Airdrop",
+    description: "The first Degen airdrop using Farcaster Frames!, Build for the Community",
     images: [
       {
-        url: BASE_URL + "/images/DefaultFrame.png",
+        url: DEGEN_URL + "/images/DefaultFrame.png",
         width: 900,
         height: 1600,
-        alt: 'Frame Token',
+        alt: 'Deframe Token',
       }
     ]
   },

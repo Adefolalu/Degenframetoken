@@ -27,7 +27,7 @@ export default function Home() {
         </div>
         <strong>First 2,000 claims graciously sponsored!</strong>
         <strong>
-          To help sponsor the airdrop, donate Base ETH to:
+          To help sponsor the airdrop, donate Degen ETH to:
           0x7dd39E3aC366D3c031ed84343377ceFbd5A9F47F
         </strong>
         <a
