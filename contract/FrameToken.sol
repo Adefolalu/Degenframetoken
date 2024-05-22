@@ -3,7 +3,7 @@ pragma solidity ^0.8.21;
 
 import "solady/src/tokens/ERC20.sol";
 
-contract FrameToken is ERC20 {
+contract Deframe is ERC20 {
     error AlreadyClaimed();
     error AirdropOver();
     error MaxSupplyReached();
