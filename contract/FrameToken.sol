@@ -47,13 +47,13 @@ contract FrameToken is ERC20 {
     }
 
     function calculateAirdropSupply(uint128 fid) public pure returns (uint256) {
-        if (fid >= 1 && fid <= 1499) {
+        if (fid >= 1 && fid <= 9999) {
             return 2_000_000_000 * 1 ether;
-        } else if (fid >= 1500 && fid <= 9999) {
-            return 1_000_000_000 * 1 ether;
         } else if (fid >= 10_000 && fid <= 99999) {
+            return 1_000_000_000 * 1 ether;
+        } else if (fid >= 100_000 && fid <= 249_999) {
             return 500_000_000 * 1 ether;
-        } else if (fid >= 100_000 && fid <= 224_999) {
+        } else if (fid >= 250_000 && fid <= 349_999) {
             return 250_000_000 * 1 ether;
         } else {
             return 100_000_000 * 1 ether;
