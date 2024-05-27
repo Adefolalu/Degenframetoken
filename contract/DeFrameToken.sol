@@ -59,7 +59,7 @@ contract Deframe is ERC20 {
             return 100_000_000 * 1 ether;
         }
     }
-
+    
     function calculateAirdropEnd() public view returns (uint256) {
         return airdropStart + 14 days;
     }
